@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="ms-3">Lista de Pilotos</h2>
+
+<form method="GET" class="mb-3 d-flex ms-3" role="search" style="max-width: 400px;">
+    <input 
+        type="text" 
+        name="q" 
+        class="form-control me-2" 
+        placeholder="Buscar piloto..." 
+        value="{{ q }}"
+    >
+    <button class="btn btn-danger">Buscar</button>
+</form>
+
+<div class="mb-3 ms-3">
+  <a href="{% url 'pilotos:piloto_create' %}" class="btn btn-primary">
+    + Crear Piloto
+  </a>
+</div>
+
+<table class="table table-dark table-hover ms-3">
+  <thead class="table-dark">
+    <tr>
+      
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Nacionalidad</th>
+      <th>Numero</th>
+      <th>Escuderia</th>
+      <th>Puntos</th>
+      <th>Activo</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for piloto in pilotos %}
+      <tr>
+        
+        <td>{{ piloto.nombre }}</td>
+        <td>{{ piloto.apellido }}</td>
+        <td>{{ piloto.nacionalidad }}</td>
+        <td>{{ piloto.numero }}</td>
+        <td>{{ piloto.escuderia }}</td>
+        <td>{{ piloto.puntos }}</td>
+        <td>{{ piloto.activo }}</td>
+        <td>
+          <a href="{% url 'pilotos:piloto_detail' piloto.id %}" class="btn btn-sm btn-info">Ver</a>
+          <a href="{% url 'pilotos:piloto_update' piloto.id %}" class="btn btn-sm btn-warning">Editar</a>
+          <a href="{% url 'pilotos:piloto_delete' piloto.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="8" class="text-center text-warning">
+                No se encontraron pilotos para "<strong>{{ request.GET.q }}</strong>".
+            </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

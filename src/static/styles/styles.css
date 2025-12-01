@@ -1,0 +1,17 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #333; 
+    height: 100%;
+}
+
+.custom-bg {
+    background-color: #000000b5; 
+    color: white;
+    min-height: 100vh; 
+}
+
+#content {
+    background: #333;
+}
+

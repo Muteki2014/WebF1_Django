@@ -1,0 +1,70 @@
+/* Fondo estilo F1 TV */
+.login-body {
+    background: url("https://wallpapercave.com/wp/wp5484772.jpg") center/cover no-repeat fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Overlay oscuro */
+.login-body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.68);
+}
+
+/* Contenedor centrado */
+.login-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Tarjeta estilo F1 TV */
+.login-card {
+    width: 380px;
+    padding: 35px;
+    background: rgba(20, 20, 20, 0.092);
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.214);
+}
+
+/* Título F1 */
+.f1-title {
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Inputs estilo dark */
+form input {
+    background: #111 !important;
+    color: #fff !important;
+    border: 1px solid #444 !important;
+}
+
+form input:focus {
+    border-color: #e10600 !important;
+    box-shadow: 0 0 5px #e10600;
+}
+
+/* Botón rojo estilo F1 */
+.btn-danger {
+    background: #e10600 !important;
+    border: none;
+}
+
+.btn-danger:hover {
+    background: #c00500 !important;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #111 inset !important;
+    -webkit-text-fill-color: white !important;
+}

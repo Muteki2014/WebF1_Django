@@ -1,0 +1,73 @@
+/* ===== HERO ESTILO F1 TV ===== */
+.f1-hero {
+    position: relative;
+    height: 100vh;                     /* Full screen real */
+    background: url('https://wallpapercave.com/wp/wp5484772.jpg') center no-repeat;
+    background-size: cover;            /* Evita distorsión */
+    background-attachment: fixed;      /* Efecto pro al scrollear */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 0;                         /* Elimina líneas blancas */
+    padding: 0;                        /* Elimina líneas blancas */
+}
+
+/* Oscurecedor */
+.f1-hero .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);      /* Más suave estilo F1 TV */
+    backdrop-filter: blur(3px);        /* Efecto premium */
+}
+
+/* Texto */
+.hero-text {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    animation: fadeIn 1.3s ease forwards;
+}
+
+/* Título estilo F1 TV */
+.title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
+
+/* Subtítulo */
+.subtitle {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+/* Botón estilo F1 */
+.f1-btn {
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.f1-btn:hover {
+    background: #b30202;
+    transform: scale(1.06);
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .title { font-size: 2.8rem; }
+    .subtitle { font-size: 1.2rem; }
+}

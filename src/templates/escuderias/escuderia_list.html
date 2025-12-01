@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="ms-3"> Lista de Escuderias</h2>
+
+<!-- BUSCADOR -->
+<form method="GET" class="mb-3 d-flex ms-3" role="search" style="max-width: 400px;">
+    <input 
+        type="text" 
+        name="q" 
+        class="form-control me-2" 
+        placeholder="Buscar escuderia..." 
+        value="{{ q }}"
+    >
+    <button class="btn btn-danger">Buscar</button>
+</form>
+
+<div class="mb-3 ms-3">
+  <a href="{% url 'escuderias:escuderia_create' %}" class="btn btn-primary">
+    + Crear Escuderia
+  </a>
+</div>
+
+<table class="table table-dark table-hover ms-3">
+  <thead class="table-dark">
+    <tr>
+      
+      <th>Nombre</th>
+      <th>Pais</th>
+      <th>Jefe de Equipo</th>
+      <th>Puntos</th>
+      <th>Activo</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for escuderia in escuderias %}
+      <tr>
+        
+        <td>{{ escuderia.nombre }}</td>
+        <td>{{ escuderia.pais }}</td>
+        <td>{{ escuderia.jefe_equipo }}</td>
+        <td>{{ escuderia.puntos }}</td>
+        <td>{{ escuderia.activo }}</td>
+        <td>
+          <a href="{% url 'escuderias:escuderia_detail' escuderia.id %}" class="btn btn-sm btn-info">Ver</a>
+          <a href="{% url 'escuderias:escuderia_update' escuderia.id %}" class="btn btn-sm btn-warning">Editar</a>
+          <a href="{% url 'escuderias:escuderia_delete' escuderia.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="6" class="text-center text-warning">
+                No se encontraron escuderias para "<strong>{{ request.GET.q }}</strong>".
+            </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

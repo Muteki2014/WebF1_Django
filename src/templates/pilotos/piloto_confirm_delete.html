@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="ms-3">
+    <h2>Confirmar Eliminación del registro</h2>
+    <p>Desea eliminar este piloto "{{ piloto.nombre }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="/pilotos/list/" class="btn btn-secondary">Cancelar</a>
+    </form> 
+</div>
+
+{% endblock content %}

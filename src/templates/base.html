@@ -1,0 +1,87 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Box-Box{% endblock title %}</title>
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="{% static 'styles/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+
+  </head>
+
+  <body>
+    <!-- SIDEBAR -->
+    <div id="sidebar" class="sidebar collapsed">
+      <div class="sidebar-header">
+        <button id="toggleBtn" class="btn btn-outline-light btn-sm">
+          <i class="bi bi-list"></i>
+        </button>
+        <span class="sidebar-text">Menú</span>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <a href="{% url 'home' %}" class="sidebar-item">
+            <i class="bi bi-house"></i>
+            <span class="sidebar-text">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'circuitos:circuito_list' %}" class="sidebar-item">
+            <i class="bi bi-flag"></i>
+            <span class="sidebar-text">Circuitos</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'pilotos:piloto_list' %}" class="sidebar-item">
+            <i class="bi bi-people"></i>
+            <span class="sidebar-text">Pilotos</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'escuderias:escuderia_list' %}" class="sidebar-item">
+            <i class="bi bi-shield"></i>
+            <span class="sidebar-text">Escuderías</span>
+          </a>
+        </li>
+      </ul>
+          <ul class="sidebar-bottom">
+              <li>
+                  <a href="#" class="sidebar-item" onclick="document.getElementById('logoutForm').submit(); return false;">
+                      <i class="bi bi-box-arrow-right"></i>
+                      <span class="sidebar-text">Salir</span>
+                  </a>
+              </li>
+          </ul>
+
+      <form id="logoutForm" method="post" action="{% url 'logout' %}" style="display: none;">
+        {% csrf_token %}
+      </form>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="content" class="content collapsed custom-bg">
+      
+        
+        {% block content %}
+        <!-- El contenido dinámico de cada página irá acá -->
+        {% endblock content %}
+
+      
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JS externo -->
+    <script src="{% static 'js/sidebar.js' %}"></script>
+  </body>
+</html>

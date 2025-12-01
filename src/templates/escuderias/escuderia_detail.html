@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% load static %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+  
+  <div class="card mx-auto bg-dark text-white" style="max-width: 18rem;">
+
+   {% if escuderia.foto %}
+    <img src="{{ escuderia.foto.url }}" class="card-img-top" alt="Foto de {{ escuderia.nombre }}">
+    {% else %}
+      <img src="{% static 'img/no-image.jpg' %}" class="card-img-top" alt="Sin foto">
+    {% endif %}
+
+    <div class="card-body">
+      <h4 class="card-title">{{ escuderia.nombre }}</h4>
+
+      <p class="card-text">
+        <strong>País:</strong> {{ escuderia.pais }} <br>
+        <strong>Jefe de Equipo:</strong> {{ escuderia.jefe_equipo }} <br>
+        <strong>Puntos:</strong> {{ escuderia.puntos }} <br>
+        <strong>Activo:</strong> {{ escuderia.activo }}
+      </p>
+  
+      <div class="mt-3 d-flex justify-content-between">
+        <a href="{% url 'escuderias:escuderia_list' %}" class="btn btn-info btn-sm">Volver</a>
+        <a href="{% url 'escuderias:escuderia_update' escuderia.id %}" class="btn btn-warning btn-sm">Editar</a>
+        <a href="{% url 'escuderias:escuderia_delete' escuderia.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+      </div>
+  
+
+    </div>
+  </div>
+
+</div>
+{% endblock content %}
