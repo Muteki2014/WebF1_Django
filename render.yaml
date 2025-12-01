@@ -13,5 +13,7 @@ services:
       gunicorn F1.wsgi:application
 
     envVars:
-      PYTHON_VERSION: "3.11"
-      DEBUG: "False"
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: DEBUG
+        value: "False"
