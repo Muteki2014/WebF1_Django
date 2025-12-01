@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: webf1
+    env: python
+    rootDir: src
+
+    buildCommand: |
+      pip install -r ../requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+
+    startCommand: |
+      gunicorn F1.wsgi:application
+
+    envVars:
+      PYTHON_VERSION: "3.11"
+      DEBUG: "False"
