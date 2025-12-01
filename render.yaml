@@ -1,13 +1,15 @@
 services:
   - type: web
-    name: box-box-f1
+    name: webf1
     env: python
-    rootDir: src
     buildCommand: |
+      cd src
       pip install -r requirements.txt
-      python manage.py migrate
       python manage.py collectstatic --noinput
-    startCommand: gunicorn F1.wsgi:application --log-file -
+      python manage.py migrate
+    startCommand: |
+      cd src
+      gunicorn F1.wsgi:application
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.12
+      PYTHON_VERSION: "3.11"
+      DEBUG: "False"
