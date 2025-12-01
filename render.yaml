@@ -2,5 +2,5 @@ services:
   - type: web
     name: box-box-f1
     env: python
-    buildCommand: cd src && pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput
+    buildCommand: cd src && pip install -r requirements.txt && cd src && python manage.py migrate && cd src && python manage.py collectstatic --noinput
     startCommand: cd src && gunicorn F1.wsgi:application --log-file -
