@@ -22,8 +22,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "box-box-f1-kn8b.onrender.com",
-    ".onrender.com",          # cubre cualquier subdominio de Render
+    "webf1-production.up.railway.app",        # cubre cualquier subdominio de Render
 ]
 
 # Application definition
